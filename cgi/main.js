@@ -54,13 +54,11 @@ function sendAngles()
 		if(i==4)
 			continue;
 
-	//	angle = document.getElementById("J" + i).value;
-	//	angles[j] = angle;
 		url += angles[j] + ',';
 		j++;
-//		document.getElementById("J" + i + "value").value = angle;
 	}
 	url = url.replace(/,$/,"");
+	url = url + "&ev=" + ev;
 	httpReq.open("GET",url,true);
 	httpReq.send(null);
 }
@@ -129,6 +127,7 @@ function oneStep(as)
 	for(k=0;k<5;k++){
 		angles[k] = as[k];
 	}
+	ev = as[6];
 
 	j=0;
 	for(k=1;k<=6;k++){

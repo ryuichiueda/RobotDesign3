@@ -1,4 +1,5 @@
 var angles = [0,0,0,0,0,0]; // 周期的にこの角度が読まれて描画される
+var ev = "OFF"; // 電磁弁のON/OFFを入れる。今はロボットへの出力専用
 
 function drawRobot()
 {

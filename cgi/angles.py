@@ -41,3 +41,12 @@ if __name__ == '__main__':
 	else:
 		print "GET ERROR"
 
+	if form.has_key("ev"):
+		with open("/run/shm/ev_on_off","w") as f:
+			if form["ev"].value == "ON":
+				f.write("1\n")
+			else:
+				f.write("0\n")
+
+			os.chmod("/run/shm/ev_on_off",0777)
+
