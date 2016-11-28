@@ -4,19 +4,15 @@
 
 '''
 The MIT License (MIT)
-
 Copyright (c) 2015 Ryuichi Ueda
-
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
 to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 copies of the Software, and to permit persons to whom the Software is
 furnished to do so, subject to the following conditions:
-
 The above copyright notice and this permission notice shall be included in all
 copies or substantial portions of the Software.
-
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -26,7 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 '''
 
-import time, os, sys
+import time, os
 import wiringpi as wp
 import threading
 
@@ -84,27 +80,23 @@ def parse_angles(f):
 
 def send_angles():
     while True:
-	try:
-       		with open("/run/shm/angles","r") as f:
-       		     	parse_angles(f)
-	except:
-		pass
-
-        time.sleep(0.02)
+        try:
+            with open("/run/shm/angles","r") as f:
+                parse_angles(f)
+            time.sleep(0.02)
+        except:
+            time.sleep(0.02)
 
 if __name__ == '__main__':
 	rio = RobotIO()
 	threading.Thread(target=send_angles).start()
 
 	while True:
-		try:
-			with open("/run/shm/adconv_values.tmp","w") as f:
-				ans = str(rio.read_da(0)) + " " + str(rio.read_da(1)) + "\n"
-				f.write(ans)
+		with open("/run/shm/adconv_values.tmp","w") as f:
+			ans = str(rio.read_da(0)) + " " + str(rio.read_da(1)) + "\n"
+			f.write(ans)
 		
-			os.rename("/run/shm/adconv_values.tmp","/run/shm/adconv_values")
-		except:
-			print >> sys.stderr, "/run/shm/adconv_values not found"
+		os.rename("/run/shm/adconv_values.tmp","/run/shm/adconv_values")
 
 		try:
 			with open("/run/shm/ev_on_off","r") as f:

@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <unistd.h>
 
-//$B4X@a3Q$r%^%K%T%e%l!<%?$KAw$k4X?t(B
-//$B0z?t(B: $B3F4X@a3Q$H(Bwait$B!J(Bms$B!K(B
+//関節角をマニピュレータに送る関数
+//引数: 各関節角とwait（ms）
 void sendAngles(int j1,int j2,int j3,int j5,int j6,double wait)
 {
 	FILE *manip = fopen("/run/shm/angles","w");
