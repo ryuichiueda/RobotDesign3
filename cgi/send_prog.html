@@ -77,13 +77,14 @@
     <div class="container">
       <div class="raw">
 	<div class="span12">
-          <h3>プログラムの<br />アップロード</h3>
+          <h2>プログラムのアップロード</h2>
           <form action="/upload.bash" method="post" enctype="multipart/form-data" target="upload_frame">
             <input type="file" name="code" />
             <input class="btn btn-warning" type="submit" />
-            <button type="button" class="btn btn-danger" id="run_code" onclick="runCode()">RUN</button>
-            <button type="button" class="btn btn-primary" onclick="stopCode()">STOP</button>
           </form>
+          <h3>実行・停止</h3>
+          <button type="button" class="btn btn-danger" id="run_code" onclick="runCode()">RUN</button>
+          <button type="button" class="btn btn-primary" onclick="stopCode()">STOP</button>
           <iframe name="upload_frame" style="display:none;"></iframe>
 
           <h3>ログ</h3>

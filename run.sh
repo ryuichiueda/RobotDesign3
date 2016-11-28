@@ -2,6 +2,10 @@
 
 exec 2> /tmp/log
 
+###HTML等を/var/www/に転送###
+sudo rm -Rf /var/www/*
+sudo rsync -av /home/pi/RobotDesign3/cgi/ /var/www/
+
 ###スティッキービットの解除###
 sudo chmod o-t /run/shm/
 
