@@ -41,6 +41,7 @@ case "$FILE" in
 ;;
 esac
 
+killall /tmp/executable
 chmod a+x /tmp/executable
 
 echo 'Content-type: text/html'

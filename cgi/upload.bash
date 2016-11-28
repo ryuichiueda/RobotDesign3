@@ -39,6 +39,11 @@ case "$FILE" in
 ;;
 esac
 
+ps aux			|
+grep executable		|
+awk '{print $2}'	|
+xargs kill -KILL
+
 chmod a+x /tmp/executable
 
 echo 'Content-type: text/html'
