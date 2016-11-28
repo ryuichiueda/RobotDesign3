@@ -129,6 +129,7 @@ function init()
 	drawRobot();
 }
 
+/*
 function runCode()
 {
 	document.getElementById("angles_log").innerHTML = "";
@@ -150,3 +151,4 @@ function stopCode()
 	httpReq.send(null);
 	document.getElementById("angles_log").innerHTML = "";
 }
+*/

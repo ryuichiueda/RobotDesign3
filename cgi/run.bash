@@ -10,6 +10,6 @@ xargs kill -KILL
 
 echo 'Content-type: text/html'
 echo 
-/tmp/executable 2> /tmp/errorlog
+/tmp/executable &> /tmp/executable.log
 echo "--STDERR--"
-cat /tmp/errorlog
+cat /tmp/executable.log
