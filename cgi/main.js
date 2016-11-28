@@ -142,3 +142,11 @@ function runCode()
 	httpReq.open("GET","/run.bash",true);
 	httpReq.send(null);
 }
+
+function stopCode()
+{
+	var httpReq = new XMLHttpRequest();
+	httpReq.open("GET","/stop.bash",false);
+	httpReq.send(null);
+	document.getElementById("angles_log").innerHTML = "";
+}
