@@ -28,6 +28,7 @@ SOFTWARE.
 
 import time, os
 import wiringpi as wp
+import threading
 
 class RobotIO:
 	PIN_BASE = 100
@@ -37,6 +38,8 @@ class RobotIO:
 		wp.mcp3002Setup(RobotIO.PIN_BASE, 0)
 		wp.wiringPiSetupGpio()
 		wp.pinMode(RobotIO.EV_PIN, wp.GPIO.OUTPUT)
+		self.uart = open('/dev/ttyUSB0',"wb")
+                self.prev = ""
 
 	def read_da(self,ch):
 		return wp.analogRead(RobotIO.PIN_BASE+ch)
@@ -45,7 +48,6 @@ class RobotIO:
 		wp.digitalWrite(RobotIO.EV_PIN,value)
 
 	def send_angles(self,angles):
-    
 		J1_ULMT = 150 
 		J1_LLMT = -150
 		angles = [ a if a < J1_ULMT else J1_ULMT for a in angles ]
@@ -53,19 +55,24 @@ class RobotIO:
     
 		s = [str(a) for a in angles ]
 		s = ['0' + a if len(a) == 1 else a for a in s ] 
-		s = ",".join(s) + '\r'
+		s = ",".join(s) + '\n'
     
 		try:
-			with open('/dev/ttyUSB0',"wb") as uart:
-				print "manipulator: ", s
-				uart.write(s)
+                        if self.prev == s:
+				return
+			self.uart.write(s)
+			self.prev = s
+			print "manipulator: ", s
 		except:
 			print s + " NG: /dev/ttyUSB0 unavailable"
 
 def parse_angles(f):
 	# 最初の行を読む
 	for line in f:
-		values = line.split(',')
+		values = line.rstrip().split(',')
+		if len(values) < 5:
+			return
+
 		values = [ int(x) for x in values ]
 		if len(values) == 5:
 			rio.send_angles(values)
@@ -75,12 +82,19 @@ def parse_angles(f):
 		else:
 			print "NG"
 
+def send_angles():
+    while True:
+        with open("/run/shm/angles","r") as f:
+            parse_angles(f)
+        time.sleep(0.02)
+
 if __name__ == '__main__':
 	rio = RobotIO()
+	threading.Thread(target=send_angles).start()
+
 	while True:
 		with open("/run/shm/adconv_values.tmp","w") as f:
 			ans = str(rio.read_da(0)) + " " + str(rio.read_da(1)) + "\n"
-			print ans
 			f.write(ans)
 		
 		os.rename("/run/shm/adconv_values.tmp","/run/shm/adconv_values")
@@ -92,12 +106,4 @@ if __name__ == '__main__':
 		except:
 			pass
 
-		try:
-			with open("/run/shm/angles","r") as f:
-				parse_angles(f)
-
-			os.remove("/run/shm/angles")
-		except:
-			pass
-			
-		time.sleep(0.1)
+		time.sleep(0.01)
