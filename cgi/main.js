@@ -18,22 +18,6 @@ function rangeToText()
 	}
 }
 
-/*
-function setAngles()
-{
-	var j = 0; //シミュレータの配列に角度を入れるためのカウンタ
-	for (i=1;i<=6;i++){
-		if(i==4)
-			continue;
-
-		angle = document.getElementById("J" + i).value;
-		angles[j] = angle;
-		j++;
-		document.getElementById("J" + i + "value").value = angle;
-	}
-}
-*/
-
 function sendAngles()
 {
 	if(window.location.href.substr(0,4) == "file")
@@ -145,3 +129,16 @@ function init()
 	drawRobot();
 }
 
+function runCode()
+{
+	document.getElementById("angles_log").innerHTML = "";
+	var httpReq = new XMLHttpRequest();
+	httpReq.onreadystatechange = function(){
+		if(httpReq.readyState != 4 || httpReq.status != 200)
+			return;
+
+		document.getElementById("angles_log").innerHTML += httpReq.responseText;
+	}
+	httpReq.open("GET","/run.bash",true);
+	httpReq.send(null);
+}

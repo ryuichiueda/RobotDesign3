@@ -150,14 +150,17 @@
 	</div>
 	<div class="span3">
           <h3>プログラムの<br />アップロード</h3>
-          <form action="/up_and_run.bash" method="post" enctype="multipart/form-data" target="upload_frame">
+          <form action="/upload.bash" method="post" enctype="multipart/form-data" target="upload_frame">
             <input type="file" name="code" />
             <input class="btn btn-warning" type="submit" />
+            <button type="button" class="btn btn-danger" id="run_code" onclick="runCode()">RUN</button>
           </form>
           <iframe name="upload_frame" style="display:none;"></iframe>
 
           <h3>ログ</h3>
-          <div id="angles_log" style="padding-left:30px;width:200px"></div>
+          <div style="padding-left:30px;width:200px">
+            <pre id="angles_log"></pre>
+          </div>
         </div>
       </div>
     </div>

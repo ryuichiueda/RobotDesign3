@@ -1,14 +1,12 @@
 #!/bin/bash -xv
 
-exec 2> /tmp/up_and_run.bash
+exec 2> /tmp/upload.bash
 
 tmp=/tmp/$$
 
 ###mimeマルチパートでPOSTされてくるデータを読み込む###
 dd bs=${CONTENT_LENGTH}	count=1	|
 nkf -wLux > $tmp-upload
-
-cat $tmp-upload > /tmp/aho
 
 ###ファイル名を取り出す###
 FILE=$(head -n 3 $tmp-upload | grep -o 'filename="[^"]*"' | sed 's/[^"]*"//' | sed 's/".*//')
@@ -45,6 +43,7 @@ chmod a+x /tmp/executable
 
 echo 'Content-type: text/html'
 echo 
-/tmp/executable 2> /tmp/errorlog
-echo "--STDERR--"
-cat /tmp/errorlog
+echo OK
+#/tmp/executable 2> /tmp/errorlog
+#echo "--STDERR--"
+#cat /tmp/errorlog
