@@ -1,14 +1,15 @@
 #include <stdio.h>
 #include <unistd.h>
 
+//関節角をマニピュレータに送る関数
+//引数: 各関節角とwait（ms）
 void sendAngles(int j1,int j2,int j3,int j5,int j6,double wait)
 {
-	FILE *manip = fopen("/run/shm/angles.tmp","w");
+	FILE *manip = fopen("/run/shm/angles","w");
 	if(manip == NULL)
 		return;
 	fprintf(manip,"%d,%d,%d,%d,%d\n",j1,j2,j3,j5,j6);
 	fclose(manip);
-	rename("/run/shm/angles.tmp","/run/shm/angles");
 	usleep((int)(wait*1000));
 }
 
