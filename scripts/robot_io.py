@@ -26,7 +26,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 '''
 
-import time, os
+import time, os, sys
 import wiringpi as wp
 import threading
 
@@ -84,8 +84,12 @@ def parse_angles(f):
 
 def send_angles():
     while True:
-        with open("/run/shm/angles","r") as f:
-            parse_angles(f)
+	try:
+       		with open("/run/shm/angles","r") as f:
+       		     	parse_angles(f)
+	except:
+		pass
+
         time.sleep(0.02)
 
 if __name__ == '__main__':
@@ -93,11 +97,14 @@ if __name__ == '__main__':
 	threading.Thread(target=send_angles).start()
 
 	while True:
-		with open("/run/shm/adconv_values.tmp","w") as f:
-			ans = str(rio.read_da(0)) + " " + str(rio.read_da(1)) + "\n"
-			f.write(ans)
+		try:
+			with open("/run/shm/adconv_values.tmp","w") as f:
+				ans = str(rio.read_da(0)) + " " + str(rio.read_da(1)) + "\n"
+				f.write(ans)
 		
-		os.rename("/run/shm/adconv_values.tmp","/run/shm/adconv_values")
+			os.rename("/run/shm/adconv_values.tmp","/run/shm/adconv_values")
+		except:
+			print >> sys.stderr, "/run/shm/adconv_values not found"
 
 		try:
 			with open("/run/shm/ev_on_off","r") as f:
