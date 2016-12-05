@@ -76,79 +76,21 @@
 
     <div class="container">
       <div class="raw">
-        <div class="span3.5">
-          <h3>関節角操作</h3>
-          <table>
-            <tr>
-              <th>関節</th>
-              <th>角度[deg]</th>
-  	    </tr>
-  	    <tr>
-                <td>J1</td>
-  	      <td><input type="range" id="J1" onchange="onChangeRange()" value="0" min="-150" max="150"></td>
-  	      <td><input type="number" id="J1value" class="anglebox" onchange="numToSlide(this)" value="0" min="-150" max="150"></td>
-  	    </tr>
-  	    <tr>
-                <td>J2</td>
-  	      <td><input type="range" id="J2" onchange="onChangeRange()" value="0" min="-150" max="150"></td>
-  	      <td><input type="number" id="J2value" class="anglebox" onchange="numToSlide(this)" value="0" min="-150" max="150"></td>
-  	    </tr>
-  	    <tr>
-                <td>J3</td>
-  	      <td><input type="range" id="J3" onchange="onChangeRange()" value="0" min="-150" max="150"></td>
-  	      <td><input type="number" id="J3value" class="anglebox" onchange="numToSlide(this)" value="0" min="-150" max="150"></td>
-  	    </tr>
-  	    <tr>
-                <td>J5</td>
-  	      <td><input type="range" id="J5" onchange="onChangeRange()" value="0" min="-150" max="150"></td>
-  	      <td><input type="number" id="J5value" class="anglebox" onchange="numToSlide(this)" value="0" min="-150" max="150"></td>
-  	    </tr>
-  	    <tr>
-  	      <td>J6</td>
-  	      <td><input type="range" id="J6" onchange="onChangeRange()" value="0" min="-150" max="150"></td>
-  	      <td><input type="number" id="J6value" class="anglebox" onchange="numToSlide(this)" value="0" min="-150" max="150"></td>
-  	    </tr>
-          </table>
-          <h3>電磁弁の操作</h3>
-          <button type="button" class="btn btn-danger" id="ev_on" onclick="ev(1)">ON</button>
-          <button type="button" class="btn btn-warning" id="ev_off" onclick="ev(0)">OFF</button>
-	</div>
-        <div class="span3">
+	<div class="span12">
+          <h3>プログラムの<br />アップロード</h3>
+          <form action="/upload.bash" method="post" enctype="multipart/form-data" target="upload_frame">
+            <input type="file" name="code" />
+            <input class="btn btn-warning" type="submit" />
+            <button type="button" class="btn btn-danger" id="run_code" onclick="runCode()">RUN</button>
+            <button type="button" class="btn btn-primary" onclick="stopCode()">STOP</button>
+          </form>
+          <iframe name="upload_frame" style="display:none;"></iframe>
 
-          <h3>関節角の連続指定</h3>
-関節角5個と時間、電磁弁（ON、OFF）をカンマ区切りで入力のこと。<br />
-          <div style="padding-bottom:10px;padding-top:20px">
-          <button type="button" class="btn btn-danger" id="run" onclick="run()">RUN</button>
-          <button type="button" class="btn btn-primary" onclick="location.reload()">CLEAR</button>
-	  </div>
-          <textarea rows="6" cols="40" id="sequence">
-20,20,20,20,20,2000,ON
-50,50,20,20,20,2000,OFF
-20,20,50,50,20,2000,ON
-50,-50,20,80,20,2000,OFF
-20,20,20,20,20,2000,ON
-50,50,20,20,20,2000,OFF
-20,20,50,50,20,2000,ON
--50,-50,20,80,20,2000,OFF
-20,20,20,20,20,2000,ON
-50,50,20,20,20,2000,OFF
-20,20,50,50,20,2000,ON
-50,-50,20,80,20,2000,OFF
-20,20,20,20,20,2000,ON
--50,50,20,20,20,2000,OFF
-20,20,50,50,20,2000,ON
-50,-50,20,80,20,2000,OFF
-</textarea>
+          <h3>ログ</h3>
+          <div style="padding-left:30px;width:200px">
+            <pre id="angles_log"></pre>
+          </div>
         </div>
-	<div class="span4.5">
-          <h3>モニタ</h3>
-	  <p class="color:red">実機も動作するので注意</p>
-	  <p>Range sensor CH0: <span id="ch0_value"></span></p>
-	  <p>Range sensor CH1: <span id="ch1_value"></span></p>
-	  <div id="sim" style="width:430px">
-            <div id="canvas"></div>
-	  </div>
-	</div>
       </div>
     </div>
 
