@@ -11,24 +11,11 @@
 
     <title>ロボット設計製作論3</title>
 
-    <!-- Bootstrap core CSS -->
     <link href="./dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="./dist/css/sticky-footer.css" rel="stylesheet">
     <link href="./assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
     <link href="dashboard.css" rel="stylesheet">
-
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="./assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="./assets/js/ie-emulation-modes-warning.js"></script>
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
   </head>
 
   <body>
@@ -45,17 +32,6 @@
           <a class="navbar-brand" href="#">ロボット設計製作論3</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-<!--
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Dashboard</a></li>
-            <li><a href="#">Settings</a></li>
-            <li><a href="#">Profile</a></li>
-            <li><a href="#">Help</a></li>
-          </ul>
-          <form class="navbar-form navbar-right">
-            <input type="text" class="form-control" placeholder="Search...">
-          </form>
--->
         </div>
       </div>
     </nav>
@@ -65,20 +41,32 @@
         <div class="col-sm-3 col-md-2 sidebar" id="menu">
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h1 class="page-header">ロボット設計製作論3 オンラインマニュアル</h1>
+          <h1 class="page-header">ロボット設計製作論3 情報ページ</h1>
 
           <div class="row placeholders">
           </div>
 
-          <h2 class="sub-header">マニピュレータについて</h2>
+          <h2 class="sub-header">講義の資料</h2>
+	  <ul>
+		  <li><a href="https://lab.ueda.asia/?page_id=1767">上田研のページ</a>（2017年以降）</li>
+		  <li><a href="http://www.kikulab.it-chiba.ac.jp/class/sekkei3/index.html">菊池研のページ</a>（過去）</li>
+	  </ul>
+          <h2 class="sub-header">マニピュレータマニュアル</h2>
           <div class="row">
 		<div class="col-sm-9">
-			<li><a href="./manipulator.html">マニピュレータのページ</a></li>
+			<li><a href="./manipulator.html">マニピュレータ本体・付属コントローラについて</a></li>
+			<li><a href="./controller.html">Raspberry Piコントローラについて</a></li>
+			<li><a href="./ta_setup.html">Raspberry Piコントローラセットアップマニュアル（主にTA用）</a></li>
 		</div>
           </div>
         </div>
       </div>
     </div>
+    <footer class="footer">
+      <div class="container">
+	<p class="text-muted">Copyright (C) 2016-2017 CIT Autonomous lab. All rights researved.</p>
+      </div>
+    </footer>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
