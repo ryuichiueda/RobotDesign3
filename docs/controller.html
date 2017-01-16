@@ -66,15 +66,44 @@
 
           <h2 class="sub-header">ブラウザからコントローラへのアクセス</h2>
           <div class="row">
-		<div class="col-sm-12">
-			<p>電源スイッチをONしてRaspberry Piの赤・緑のLEDの様子を見て動作していることを確認します。</p>
-	  		<p>コントローラにIPアドレスが明記してあるので、自分のノートPCのブラウザから
-			<pre>
-				http://&lt;IPアドレス&gt;
-			</pre>
-			で接続します。</p>
+	    <div class="col-sm-12">
+	      <p>電源スイッチをONしてRaspberry Piの赤・緑のLEDの様子を見て動作していることを確認します。</p>
+	      <p>コントローラにIPアドレスが明記してあるので、自分のノートPCのブラウザから
+	      <pre>http://&lt;IPアドレス&gt;</pre>
+	      で接続します。次のように画面が開き、距離センサ（ADコンバータ）の値がリアルタイムで確認できたら、ラズパイ側のプログラムが無事に走っています。</p>
+	      <p>
+	        <a href="./figs/web_app.png"><img style="width:50%" src="./figs/web_app.png" /></a>
+	      </p>
 		</div>
           </div>
+          <h2 class="sub-header">ロボットコントロールパネルの操作</h2>
+          <div class="row">
+	      <div class="col-sm-12">
+		      <p>ブラウザで表示される「ロボットコントロールパネル」には、次のようなツールが備わっています。</p>
+              </div>
+              <table class="table table-striped">
+                <tr>
+                  <th>ツール</th>
+                  <th>機能</th>
+                </tr>
+                <tr>
+                  <td>関節角操作</td>
+                  <td>スライドバーや角度入力のためのテキストボックスで各関節の角度を指定すると、その通りにマニピュレータとモニタのシミュレションが動きます。</td>
+                </tr>
+                <tr>
+                  <td>...</td>
+                  <td>...</td>
+                </tr>
+              </table>
+          </div>
+
+          <h2 class="sub-header">オフラインでのロボットコントロールパネルの利用</h2>
+          <div class="row">
+	    <div class="col-sm-12">
+	      <p>モニタのシミュレータは、OSの種類を問わず主要なブラウザがあれば、実機のロボットがなくても動作します。<a href="https://github.com/ryuichiueda/RobotDesign3" target="_blank">GitHubのリポジトリ</a>からリポジトリ全体をダウンロードし、ブラウザで./cgi/index.htmlを開くと動作します。</p>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
