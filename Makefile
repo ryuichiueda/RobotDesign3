@@ -1,15 +1,12 @@
 install:
-	#Raspbianのアップデート
-	rpi-update
-
+	#python-pipとpython-devをインストール
+	apt-get install python-pip python-dev
 	#WiringPiのインストール
 	pip install wiringpi2 --upgrade
-
 	#nkfのインストール
-	apt install nkf
-
+	apt-get install nkf
 	#ウェブサーバとアプリのセットアップ
-	apt install apache2
+	apt-get install apache2
 	a2enmod cgid
 
 	rm /etc/apache2/sites-enabled/*
@@ -17,7 +14,7 @@ install:
 	ln -s /etc/apache2/sites-available/default /etc/apache2/sites-enabled/default.conf
 
 	service apache2 restart
-	rsync -av --delete /home/pi/RobotDesign3/cgi/ /var/www/
+	rsync -av --delete /home/ubuntu/RobotDesign3/cgi/ /var/www/
 
 	crontab crontab.conf
 	echo "DO REBOOT"
