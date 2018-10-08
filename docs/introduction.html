@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<link rel="icon" href="./favicon.ico">
+
+		<title>ロボット設計製作論3</title>
+
+		<link href="./dist/css/bootstrap.min.css" rel="stylesheet">
+		<link href="./dist/css/sticky-footer.css" rel="stylesheet">
+		<link href="./assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+		<link href="dashboard.css" rel="stylesheet">
+		<script src="./assets/js/ie-emulation-modes-warning.js"></script>
+	</head>
+
+	<body>
+
+		<nav class="navbar navbar-inverse navbar-fixed-top">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="#">ロボット設計製作論3</a>
+				</div>
+				<div id="navbar" class="navbar-collapse collapse">
+				</div>
+			</div>
+		</nav>
+
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-sm-3 col-md-2 sidebar" id="menu">
+				</div>
+				<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+					<h1 class="page-header">マニピュレータの使い方講習</h1>
+
+					<div class="row">
+						<div class="col-sm-12">
+							<p>本ページではマニピュレータの使い方講習で説明の補助となる内容をまとめています。</p>
+							<p>講習では以下のソフトウェアを使用します。</p>
+							<ul>
+								<li>Windows
+									<ul>
+										<li>Google Chrome</li>
+										<li>Tera Term</li>
+									</ul>
+								</li>
+								<li>macOS/Ubuntu
+									<ul>
+										<li>Google Chrome</li>
+										<li>Terminal</li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+					</div>
+
+					<h2 class="sub-header">1. 本体の使い方</h2>
+					<div class="row">
+						<div class="col-sm-12">
+							<p>「危ない！」と思ったときにすぐに非常停止ができるよう、コントロールボックスは常に手元に置いておきます。</p>
+
+						</div>
+					</div>
+					<h2 class="sub-header">2. Webブラウザ経由の操作</h2>
+					<div class="row">
+						<div class="col-sm-12">
+							<p><a href="./ta_setup.html">セットアップ</a>を参照して操作する対象のRaspberry PiのIPアドレスを確認します。</p>
+							Google Chromeを起動してURLとして入力します。
+							<a href="https://gyazo.com/29a1ee222fbaafd26a7635dc84cb6128"><img src="https://i.gyazo.com/29a1ee222fbaafd26a7635dc84cb6128.png" alt="Image from Gyazo" width="100%"/></a>
+						</div>
+					</div>
+					<h2 class="sub-header">3. SSH経由の操作</h2>
+					<div class="row">
+						<div class="col-sm-12">
+							<h3 class="sub-header">ログイン</h3>
+							<p>SSHでログインします。ユーザ名は<code>ubuntu</code>、パスワードは<code>raspberry</code>です。</p>
+
+							<h3 class="sub-header">確認</h3>
+							<p><code>adconv_values</code>, <code>angles</code>, <code>ev_on_off</code>の3つのファイルが存在することを確認しましょう。</p>
+							<pre>
+ubuntu@ubuntu:~$ cd /run/shm
+ubuntu@ubuntu:/run/shm$ ls
+adconv_values  angles  ev_on_off</pre>
+							<p>ロボットの電源が入っていない場合やRaspberry Piとロボットがうまく接続できていない場合、ファイルが存在しないことがあります。</p>
+							<h3 class="sub-header">アナログセンサ</h3>
+							<p>デバイスファイルを操作してアナログセンサの値を取得してみましょう。</p>
+							<pre>
+ubuntu@ubuntu:/run/shm$ cat adconv_values
+7 4</pre>
+							<h3 class="sub-header">バルブ開閉</h3>
+							<p>デバイスファイルを操作してバルブの開閉をしてみましょう。</p>
+							<pre>
+ubuntu@ubuntu:/run/shm$ cat ev_on_off
+0
+ubuntu@ubuntu:/run/shm$ echo 1 > ev_on_off
+ubuntu@ubuntu:/run/shm$ echo 0 > ev_on_off</pre>
+							<h3 class="sub-header">マニピュレータの操作</h3>
+							<p>デバイスファイルを操作してマニピュレータの角度の取得、設定をしてみましょう。</p>
+							<pre>
+ubuntu@ubuntu:/run/shm$ cat angles
+0,0,0,0,23
+ubuntu@ubuntu:/run/shm$ echo "0,0,0,0,0" > angles</pre>
+
+							<p>ロボット側の電源が立ち上がっていないと、/tmp/log中に以下のようなワーニングが出ます。 この場合はロボットの電源を入れてRaspberry Piを再起動し、再度/tmp/logを確認しましょう。</p>
+							<code>
+								chmod: cannot access `/dev/ttyUSB0': No such file or directory
+							</code>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<footer class="footer">
+			<div class="container">
+				<p class="text-muted">Copyright (C) 2016-2018 CIT Autonomous lab. All rights researved.</p>
+			</div>                                                                     
+		</footer>  
+
+		<!-- Bootstrap core JavaScript
+	  ================================================== -->
+	  <!-- Placed at the end of the document so the pages load faster -->
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	  <script>
+		  $(function() {
+			  $("#navbar").load("./navbar.html");
+			  $("#menu").load("./menu.html");
+		  });
+	  </script>
+	  <script>window.jQuery || document.write('<script src="./assets/js/vendor/jquery.min.js"><\/script>')</script>
+	  <script src="./dist/js/bootstrap.min.js"></script>
+	  <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+	  <script src="./assets/js/vendor/holder.min.js"></script>
+	  <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+	  <script src="./assets/js/ie10-viewport-bug-workaround.js"></script>
+	</body>
+</html>
