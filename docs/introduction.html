@@ -74,7 +74,7 @@
 					<h2 class="sub-header">2. Webブラウザ経由の操作</h2>
 					<div class="row">
 						<div class="col-sm-12">
-							<p><a href="./ta_setup.html">セットアップ</a>を参照して操作する対象のRaspberry PiのIPアドレスを確認します。</p>
+							<p><a href="./ta_setup.html" target=”_blank”>セットアップ</a>を参照して操作する対象のRaspberry PiのIPアドレスを確認します。</p>
 							Google Chromeを起動してURLとして入力します。
 							<a href="https://gyazo.com/29a1ee222fbaafd26a7635dc84cb6128"><img src="https://i.gyazo.com/29a1ee222fbaafd26a7635dc84cb6128.png" alt="Image from Gyazo" width="100%"/></a>
 						</div>
@@ -115,6 +115,17 @@ ubuntu@ubuntu:/run/shm$ echo "0,0,0,0,0" > angles</pre>
 							<code>
 								chmod: cannot access `/dev/ttyUSB0': No such file or directory
 							</code>
+						</div>
+					</div>
+					<h2 class="sub-header">4. C言語で書かれたサンプルの実行</h2>
+					<div class="row">
+						<div class="col-sm-12">
+							<p>C言語で書かれたサンプルを実行してみましょう。</p>
+							<pre>
+ubuntu@ubuntu:/run/shm$ cd ~/RobotDesign3/code_sample/c_cpp/
+ubuntu@ubuntu:~/RobotDesign3/code_sample/c_cpp$ gcc manip.cc -o a.out
+ubuntu@ubuntu:~/RobotDesign3/code_sample/c_cpp$ ./a.out</pre>
+							これらのサンプルはすべてWeb上で公開されています。公開先は<a href="https://github.com/ryuichiueda/RobotDesign3" target=”_blank”>こちら</a>。
 						</div>
 					</div>
 				</div>
