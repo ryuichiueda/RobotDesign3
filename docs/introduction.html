@@ -16,6 +16,9 @@
 		<link href="./assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 		<link href="dashboard.css" rel="stylesheet">
 		<script src="./assets/js/ie-emulation-modes-warning.js"></script>
+		<link href="./dist/css/github.min.css" rel="stylesheet">
+		<script src="./dist/js/highlight.min.js"></script>
+		<script>hljs.initHighlightingOnLoad();</script>
 	</head>
 
 	<body>
@@ -67,49 +70,58 @@
 					<h2 class="sub-header">1. 本体の使い方</h2>
 					<div class="row">
 						<div class="col-sm-12">
-							<p>「危ない！」と思ったときにすぐに非常停止ができるよう、コントロールボックスは常に手元に置いておきます。</p>
-
+							<p>「危ない！」と思ったときにすぐに非常停止ができるよう、ティーチングボックスは常に手元に置いておきます。</p>
 						</div>
 					</div>
 					<h2 class="sub-header">2. Webブラウザ経由の操作</h2>
 					<div class="row">
 						<div class="col-sm-12">
-							<p><a href="./ta_setup.html" target=”_blank”>セットアップ</a>を参照して操作する対象のRaspberry PiのIPアドレスを確認します。</p>
-							Google Chromeを起動してURLとして入力します。
+							<p><a href="./ta_setup.html" target=”_blank”>セットアップ</a>またはRaspberry Pi本体または基板に貼り付けられたIPアドレスが印字されたテープを参照し、操作する対象のRaspberry PiのIPアドレスを確認します。</p>
+							<p>IPアドレスは<code>10.232.169.2</code>などのように数字とピリオドで構成されています。Google Chromeを起動してURLとして入力します。</p>
+							<p>「関節角操作」、「電磁弁の操作」、「関節角の連続指定」ができること、関節角を変更すると「モニタ」上でロボットのモデルと実機の両方が動くことを確認しましょう。</p>
+							<p>さらにここでティーチングボックスの非常停止スイッチの使い方も確認しておきましょう。</p>
 							<a href="https://gyazo.com/29a1ee222fbaafd26a7635dc84cb6128"><img src="https://i.gyazo.com/29a1ee222fbaafd26a7635dc84cb6128.png" alt="Image from Gyazo" width="100%"/></a>
 						</div>
 					</div>
 					<h2 class="sub-header">3. SSH経由の操作</h2>
 					<div class="row">
 						<div class="col-sm-12">
+							<p>WebブラウザでRobot Consoleを開いたままSSH接続して操作します。</p>
 							<h3 class="sub-header">ログイン</h3>
-							<p>SSHでログインします。ユーザ名は<code>ubuntu</code>、パスワードは<code>raspberry</code>です。</p>
+							<p>SSHでログインします。</p>
+							<p>初回接続時は次のようにセキュリティ警告が出ます。「続行」を選択してください。</p>
+							<a href="https://gyazo.com/cfedd3c69035656b0716a6cd8c2c024a"><img src="https://i.gyazo.com/cfedd3c69035656b0716a6cd8c2c024a.png" alt="Image from Gyazo" width="739"/></a>
+							<p>ユーザ名は<code>ubuntu</code>、パスワードは<code>raspberry</code>でログインします。</p>
+							<a href="https://gyazo.com/7de905049e8093b237fd54e8b5371b2a"><img src="https://i.gyazo.com/7de905049e8093b237fd54e8b5371b2a.png" alt="Image from Gyazo" width="739"/></a>
 
 							<h3 class="sub-header">確認</h3>
-							<p><code>adconv_values</code>, <code>angles</code>, <code>ev_on_off</code>の3つのファイルが存在することを確認しましょう。</p>
-							<pre>
-ubuntu@ubuntu:~$ cd /run/shm
+							<p><code>adconv_values</code>, <code>angles</code>, <code>ev_on_off</code>の3つのファイルが存在することを確認しましょう。<code>$</code>より後のコマンドを1行ずつTera Termに入力していきます。</p>
+							<pre><code class="shell">ubuntu@ubuntu:~$ cd /run/shm
 ubuntu@ubuntu:/run/shm$ ls
-adconv_values  angles  ev_on_off</pre>
+adconv_values  angles  ev_on_off
+</code></pre>
 							<p>ロボットの電源が入っていない場合やRaspberry Piとロボットがうまく接続できていない場合、ファイルが存在しないことがあります。</p>
 							<h3 class="sub-header">アナログセンサ</h3>
-							<p>デバイスファイルを操作してアナログセンサの値を取得してみましょう。</p>
-							<pre>
+							<p>デバイスファイルを操作してアナログセンサの値を何度か取得してみましょう。Webブラウザで開いているRobot Consoleで表示されている値と同じように変動することを確認しましょう。</p>
+							<pre><code class="shell">ubuntu@ubuntu:/run/shm$ cat adconv_values
+7 4
 ubuntu@ubuntu:/run/shm$ cat adconv_values
-7 4</pre>
+125 42
+</code></pre>
 							<h3 class="sub-header">バルブ開閉</h3>
 							<p>デバイスファイルを操作してバルブの開閉をしてみましょう。</p>
-							<pre>
-ubuntu@ubuntu:/run/shm$ cat ev_on_off
+							<pre><code class="shell">ubuntu@ubuntu:/run/shm$ cat ev_on_off
 0
 ubuntu@ubuntu:/run/shm$ echo 1 > ev_on_off
-ubuntu@ubuntu:/run/shm$ echo 0 > ev_on_off</pre>
+ubuntu@ubuntu:/run/shm$ echo 0 > ev_on_off
+</code></pre>
 							<h3 class="sub-header">マニピュレータの操作</h3>
-							<p>デバイスファイルを操作してマニピュレータの角度の取得、設定をしてみましょう。</p>
-							<pre>
-ubuntu@ubuntu:/run/shm$ cat angles
+							<p>デバイスファイルを操作してマニピュレータの角度の取得、設定をしてみましょう。角度を設定するとロボットが動き出すので注意しましょう。</p>
+							<p>角度は半角数字でカンマ区切りで指定します。</p>
+							<pre><code class="shell">ubuntu@ubuntu:/run/shm$ cat angles
 0,0,0,0,23
-ubuntu@ubuntu:/run/shm$ echo "0,0,0,0,0" > angles</pre>
+ubuntu@ubuntu:/run/shm$ echo "0,0,0,0,0" > angles
+</code></pre>
 
 							<p>ロボット側の電源が立ち上がっていないと、/tmp/log中に以下のようなワーニングが出ます。 この場合はロボットの電源を入れてRaspberry Piを再起動し、再度/tmp/logを確認しましょう。</p>
 							<code>
@@ -120,12 +132,13 @@ ubuntu@ubuntu:/run/shm$ echo "0,0,0,0,0" > angles</pre>
 					<h2 class="sub-header">4. C言語で書かれたサンプルの実行</h2>
 					<div class="row">
 						<div class="col-sm-12">
-							<p>C言語で書かれたサンプルを実行してみましょう。</p>
-							<pre>
-ubuntu@ubuntu:/run/shm$ cd ~/RobotDesign3/code_sample/c_cpp/
+							<p>C言語で書かれたサンプルを実行してみましょう。コンパイルした<code>a.out</code>を実行するとロボットが動き出すので注意しましょう。</p>
+							<pre><code class="shell">ubuntu@ubuntu:/run/shm$ cd ~/RobotDesign3/code_sample/c_cpp/
 ubuntu@ubuntu:~/RobotDesign3/code_sample/c_cpp$ gcc manip.cc -o a.out
-ubuntu@ubuntu:~/RobotDesign3/code_sample/c_cpp$ ./a.out</pre>
-							これらのサンプルはすべてWeb上で公開されています。公開先は<a href="https://github.com/ryuichiueda/RobotDesign3" target=”_blank”>こちら</a>。
+ubuntu@ubuntu:~/RobotDesign3/code_sample/c_cpp$ ./a.out
+</code></pre>
+							今回使用しているシステムはオープンソースソフトウェアとして開発されており、すべてWeb上で<a href="https://github.com/ryuichiueda/RobotDesign3" target=”_blank”>公開されています</a>。
+							今回実行したサンプルは<a href="https://github.com/ryuichiueda/RobotDesign3/blob/master/code_sample/c_cpp/manip.cc" target="_blank">こちら</a>です。
 						</div>
 					</div>
 				</div>
