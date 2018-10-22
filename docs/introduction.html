@@ -80,7 +80,7 @@
 							<p>IPアドレスは<code>10.232.169.2</code>などのように数字とピリオドで構成されています。Google Chromeを起動してURLとして入力します。</p>
 							<p>「関節角操作」、「電磁弁の操作」、「関節角の連続指定」ができること、関節角を変更すると「モニタ」上でロボットのモデルと実機の両方が動くことを確認しましょう。</p>
 							<p>さらにここでティーチングボックスの非常停止スイッチの使い方も確認しておきましょう。</p>
-							<a href="https://gyazo.com/29a1ee222fbaafd26a7635dc84cb6128"><img src="https://i.gyazo.com/29a1ee222fbaafd26a7635dc84cb6128.png" alt="Image from Gyazo" width="100%"/></a>
+							<img src="https://i.gyazo.com/29a1ee222fbaafd26a7635dc84cb6128.png" alt="Image from Gyazo" width="100%"/>
 						</div>
 					</div>
 					<h2 class="sub-header">3. SSH経由の操作</h2>
@@ -88,11 +88,12 @@
 						<div class="col-sm-12">
 							<p>WebブラウザでRobot Consoleを開いたままSSH接続して操作します。</p>
 							<h3 class="sub-header">ログイン</h3>
-							<p>SSHでログインします。</p>
+							<p>SSHでログインします。IPアドレスが<code>10.232.169.2</code>の場合は次の図のようになります。</p>
+							<img src="https://i.gyazo.com/311f9dbbb1636b2f1515af1af7ec7263.png" alt="Image from Gyazo" width="659"/>
 							<p>初回接続時は次のようにセキュリティ警告が出ます。「続行」を選択してください。</p>
-							<a href="https://gyazo.com/cfedd3c69035656b0716a6cd8c2c024a"><img src="https://i.gyazo.com/cfedd3c69035656b0716a6cd8c2c024a.png" alt="Image from Gyazo" width="739"/></a>
+							<img src="https://i.gyazo.com/cfedd3c69035656b0716a6cd8c2c024a.png" alt="Image from Gyazo" width="739"/>
 							<p>ユーザ名は<code>ubuntu</code>、パスワードは<code>raspberry</code>でログインします。</p>
-							<a href="https://gyazo.com/7de905049e8093b237fd54e8b5371b2a"><img src="https://i.gyazo.com/7de905049e8093b237fd54e8b5371b2a.png" alt="Image from Gyazo" width="739"/></a>
+							<img src="https://i.gyazo.com/7de905049e8093b237fd54e8b5371b2a.png" alt="Image from Gyazo" width="739"/>
 
 							<h3 class="sub-header">確認</h3>
 							<p><code>adconv_values</code>, <code>angles</code>, <code>ev_on_off</code>の3つのファイルが存在することを確認しましょう。<code>$</code>より後のコマンドを1行ずつTera Termに入力していきます。</p>
