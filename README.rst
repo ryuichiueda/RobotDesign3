@@ -8,7 +8,7 @@
 設計製作論3のコントローラのソフトウェア一式です。
 詳しくは、以下のウェブサイトをご覧ください。
 
-* https://ryuichiueda.github.io/RobotDesign3/manipulator.html
+* https://ryuichiueda.github.io/RobotDesign3/index.html
 
 
 オープンソースの利用について
