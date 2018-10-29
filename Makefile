@@ -1,6 +1,6 @@
 install:
-	#Raspbianのアップデート
-	rpi-update
+	#python-pipとpython-devをインストール
+	apt install python-pip python-dev
 
 	#WiringPiのインストール
 	pip install wiringpi2 --upgrade
@@ -17,7 +17,7 @@ install:
 	ln -s /etc/apache2/sites-available/default /etc/apache2/sites-enabled/default.conf
 
 	service apache2 restart
-	rsync -av --delete /home/pi/RobotDesign3/cgi/ /var/www/
+	rsync -av --delete /home/ubuntu/RobotDesign3/cgi/ /var/www/
 
 	crontab crontab.conf
 	echo "DO REBOOT"
