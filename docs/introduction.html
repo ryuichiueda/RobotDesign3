@@ -1,173 +1,191 @@
 <!DOCTYPE html>
 <html lang="ja">
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-		<meta name="description" content="">
-		<meta name="author" content="">
-		<link rel="icon" href="./favicon.ico">
 
-		<title>ロボット設計製作論3</title>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<link rel="icon" href="./favicon.ico">
 
-		<link href="./dist/css/bootstrap.min.css" rel="stylesheet">
-		<link href="./dist/css/sticky-footer.css" rel="stylesheet">
-		<link href="./assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-		<link href="dashboard.css" rel="stylesheet">
-		<script src="./assets/js/ie-emulation-modes-warning.js"></script>
-		<link href="./dist/css/github.min.css" rel="stylesheet">
-		<script src="./dist/js/highlight.min.js"></script>
-		<script>hljs.initHighlightingOnLoad();</script>
-	</head>
+	<title>ロボット設計製作論3</title>
 
-	<body>
+	<link href="./dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="./dist/css/sticky-footer.css" rel="stylesheet">
+	<link href="./assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+	<link href="dashboard.css" rel="stylesheet">
+	<script src="./assets/js/ie-emulation-modes-warning.js"></script>
+	<link href="./dist/css/github.min.css" rel="stylesheet">
+	<script src="./dist/js/highlight.min.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+</head>
 
-		<nav class="navbar navbar-inverse navbar-fixed-top">
-			<div class="container-fluid">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand" href="#">ロボット設計製作論3</a>
-				</div>
-				<div id="navbar" class="navbar-collapse collapse">
-				</div>
-			</div>
-		</nav>
+<body>
 
+	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container-fluid">
-			<div class="row">
-				<div class="col-sm-3 col-md-2 sidebar" id="menu">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+					aria-expanded="false" aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">ロボット設計製作論3</a>
+			</div>
+			<div id="navbar" class="navbar-collapse collapse">
+			</div>
+		</div>
+	</nav>
+
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-3 col-md-2 sidebar" id="menu">
+			</div>
+			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+				<h1 class="page-header">マニピュレータの使い方講習</h1>
+
+				<div class="row">
+					<div class="col-sm-12">
+						<p>本ページではマニピュレータの使い方講習で説明の補助となる内容をまとめています。</p>
+						<p>講習では以下のソフトウェアを使用します。</p>
+						<ul>
+							<li>Windows
+								<ul>
+									<li>Google Chrome</li>
+									<li>Tera Term</li>
+								</ul>
+							</li>
+							<li>macOS/Ubuntu
+								<ul>
+									<li>Google Chrome</li>
+									<li>Terminal</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
 				</div>
-				<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-					<h1 class="page-header">マニピュレータの使い方講習</h1>
 
-					<div class="row">
-						<div class="col-sm-12">
-							<p>本ページではマニピュレータの使い方講習で説明の補助となる内容をまとめています。</p>
-							<p>講習では以下のソフトウェアを使用します。</p>
-							<ul>
-								<li>Windows
-									<ul>
-										<li>Google Chrome</li>
-										<li>Tera Term</li>
-									</ul>
-								</li>
-								<li>macOS/Ubuntu
-									<ul>
-										<li>Google Chrome</li>
-										<li>Terminal</li>
-									</ul>
-								</li>
-							</ul>
-						</div>
+				<h2 class="sub-header">1. 本体の使い方</h2>
+				<div class="row">
+					<div class="col-sm-12">
+						<p>「危ない！」と思ったときにすぐに非常停止ができるよう、ティーチングボックスは常に手元に置いておきます。全員一回以上非常停止スイッチを押し、非常停止の仕方を確認しておきましょう。</p>
+						<img src="https://i.gyazo.com/adba9efe0a2397d6b82cf7ec779a7a27.jpg" alt="Image from Gyazo"
+							width="80%" />
 					</div>
+				</div>
+				<h2 class="sub-header">2. Webブラウザ経由の操作</h2>
+				<div class="row">
+					<div class="col-sm-12">
+						<p>SSID "adrobo-robothand" に接続します。</p>
+						<p><a href="./ta_setup.html" target=”_blank”>セットアップ</a>またはRaspberry
+							Pi本体または基板に貼り付けられたIPアドレスが印字されたテープを参照し、操作する対象のRaspberry PiのIPアドレスを確認します。</p>
+						<p>IPアドレスは<code>10.232.169.22</code>などのように数字とピリオドで構成されています。Google Chromeを起動してURLとして入力します。</p>
+						<p>「関節角操作」、「電磁弁の操作」、「関節角の連続指定」ができること、関節角を変更すると「モニタ」上でロボットのモデルと実機の両方が動くことを確認しましょう。</p>
+						<p>さらにここでティーチングボックスの非常停止スイッチの使い方も確認しておきましょう。</p>
+						<img src="https://i.gyazo.com/29a1ee222fbaafd26a7635dc84cb6128.png" alt="Image from Gyazo"
+							width="100%" />
+					</div>
+				</div>
+				<h2 class="sub-header">3. SSH経由の操作</h2>
+				<div class="row">
+					<div class="col-sm-12">
+						<p>WebブラウザでRobot Consoleを開いたままSSH接続して操作します。</p>
+						<h3 class="sub-header">ログイン</h3>
+						<p>SSHでログインします。IPアドレスが<code>10.232.169.2</code>の場合は次の図のようになります。</p>
+						<img src="https://i.gyazo.com/311f9dbbb1636b2f1515af1af7ec7263.png" alt="Image from Gyazo"
+							width="659" />
+						<p>初回接続時は次のようにセキュリティ警告が出ます。「続行」を選択してください。</p>
+						<img src="https://i.gyazo.com/cfedd3c69035656b0716a6cd8c2c024a.png" alt="Image from Gyazo"
+							width="739" />
+						<p>ユーザ名は<code>ubuntu</code>、パスワードは<code>raspberry</code>でログインします。</p>
+						<img src="https://i.gyazo.com/7de905049e8093b237fd54e8b5371b2a.png" alt="Image from Gyazo"
+							width="739" />
 
-					<h2 class="sub-header">1. 本体の使い方</h2>
-					<div class="row">
-						<div class="col-sm-12">
-							<p>「危ない！」と思ったときにすぐに非常停止ができるよう、ティーチングボックスは常に手元に置いておきます。全員一回以上非常停止スイッチを押し、非常停止の仕方を確認しておきましょう。</p>
-							<img src="https://i.gyazo.com/adba9efe0a2397d6b82cf7ec779a7a27.jpg" alt="Image from Gyazo" width="80%"/>
-						</div>
-					</div>
-					<h2 class="sub-header">2. Webブラウザ経由の操作</h2>
-					<div class="row">
-						<div class="col-sm-12">
-							<p>SSID "adrobo-robothand" に接続します。</p>
-							<p><a href="./ta_setup.html" target=”_blank”>セットアップ</a>またはRaspberry Pi本体または基板に貼り付けられたIPアドレスが印字されたテープを参照し、操作する対象のRaspberry PiのIPアドレスを確認します。</p>
-							<p>IPアドレスは<code>10.232.169.22</code>などのように数字とピリオドで構成されています。Google Chromeを起動してURLとして入力します。</p>
-							<p>「関節角操作」、「電磁弁の操作」、「関節角の連続指定」ができること、関節角を変更すると「モニタ」上でロボットのモデルと実機の両方が動くことを確認しましょう。</p>
-							<p>さらにここでティーチングボックスの非常停止スイッチの使い方も確認しておきましょう。</p>
-							<img src="https://i.gyazo.com/29a1ee222fbaafd26a7635dc84cb6128.png" alt="Image from Gyazo" width="100%"/>
-						</div>
-					</div>
-					<h2 class="sub-header">3. SSH経由の操作</h2>
-					<div class="row">
-						<div class="col-sm-12">
-							<p>WebブラウザでRobot Consoleを開いたままSSH接続して操作します。</p>
-							<h3 class="sub-header">ログイン</h3>
-							<p>SSHでログインします。IPアドレスが<code>10.232.169.2</code>の場合は次の図のようになります。</p>
-							<img src="https://i.gyazo.com/311f9dbbb1636b2f1515af1af7ec7263.png" alt="Image from Gyazo" width="659"/>
-							<p>初回接続時は次のようにセキュリティ警告が出ます。「続行」を選択してください。</p>
-							<img src="https://i.gyazo.com/cfedd3c69035656b0716a6cd8c2c024a.png" alt="Image from Gyazo" width="739"/>
-							<p>ユーザ名は<code>ubuntu</code>、パスワードは<code>raspberry</code>でログインします。</p>
-							<img src="https://i.gyazo.com/7de905049e8093b237fd54e8b5371b2a.png" alt="Image from Gyazo" width="739"/>
-
-							<h3 class="sub-header">確認</h3>
-							<p><code>adconv_values</code>, <code>angles</code>, <code>ev_on_off</code>の3つのファイルが存在することを確認しましょう。<code>$</code>より後のコマンドを1行ずつTera Termに入力していきます。</p>
-							<pre><code class="shell">ubuntu@ubuntu:~$ cd /run/shm
+						<h3 class="sub-header">確認</h3>
+						<p><code>adconv_values</code>, <code>angles</code>,
+							<code>ev_on_off</code>の3つのファイルが存在することを確認しましょう。<code>$</code>より後のコマンドを1行ずつTera Termに入力していきます。
+						</p>
+						<pre><code class="shell">ubuntu@ubuntu:~$ cd /run/shm
 ubuntu@ubuntu:/run/shm$ ls
 adconv_values  angles  ev_on_off
 </code></pre>
-							<p>ロボットの電源が入っていない場合やRaspberry Piとロボットがうまく接続できていない場合、ファイルが存在しないことがあります。</p>
-							<h3 class="sub-header">アナログセンサ</h3>
-							<p>デバイスファイルを操作してアナログセンサの値を何度か取得してみましょう。Webブラウザで開いているRobot Consoleで表示されている値と同じように変動することを確認しましょう。</p>
-							<pre><code class="shell">ubuntu@ubuntu:/run/shm$ cat adconv_values
+						<p>ロボットの電源が入っていない場合やRaspberry Piとロボットがうまく接続できていない場合、ファイルが存在しないことがあります。</p>
+						<h3 class="sub-header">アナログセンサ</h3>
+						<p>デバイスファイルを操作してアナログセンサの値を何度か取得してみましょう。Webブラウザで開いているRobot Consoleで表示されている値と同じように変動することを確認しましょう。
+						</p>
+						<p>コマンドを実行した瞬間のアナログセンサの状態を取得することができます。
+						</p>
+						<pre><code class="shell">ubuntu@ubuntu:/run/shm$ cat adconv_values
 7 4
 ubuntu@ubuntu:/run/shm$ cat adconv_values
 125 42
 </code></pre>
-							<h3 class="sub-header">バルブ開閉</h3>
-							<p>デバイスファイルを操作してバルブの開閉をしてみましょう。バルブ本体のLEDが点灯/消灯します。</p>
-							<pre><code class="shell">ubuntu@ubuntu:/run/shm$ cat ev_on_off
+						<h3 class="sub-header">バルブ開閉</h3>
+						<p>デバイスファイルを操作してバルブの開閉をしてみましょう。エアシリンダが動きます。</p>
+						<pre><code class="shell">ubuntu@ubuntu:/run/shm$ cat ev_on_off
 0
 ubuntu@ubuntu:/run/shm$ echo 1 > ev_on_off
 ubuntu@ubuntu:/run/shm$ echo 0 > ev_on_off
 </code></pre>
-							<h3 class="sub-header">マニピュレータの操作</h3>
-							<p>デバイスファイルを操作してマニピュレータの角度の取得、設定をしてみましょう。角度を設定するとロボットが動き出すので注意しましょう。</p>
-							<p>角度は半角数字でカンマ区切りで指定します。</p>
-							<pre><code class="shell">ubuntu@ubuntu:/run/shm$ cat angles
+						<h3 class="sub-header">マニピュレータの操作</h3>
+						<p>デバイスファイルを操作してマニピュレータの角度の取得、設定をしてみましょう。角度を設定するとロボットが動き出すので注意しましょう。</p>
+						<p>角度は半角数字でカンマ区切りで指定します。</p>
+						<pre><code class="shell">ubuntu@ubuntu:/run/shm$ cat angles
 0,0,0,0,23
 ubuntu@ubuntu:/run/shm$ echo "0,0,0,0,0" > angles
 </code></pre>
 
-							<p>ロボット側の電源が立ち上がっていないと、/tmp/log中に以下のようなワーニングが出ます。 この場合はロボットの電源を入れてRaspberry Piを再起動し、再度/tmp/logを確認しましょう。</p>
-							<code>
+						<p>ロボット側の電源が立ち上がっていないと、/tmp/log中に以下のようなワーニングが出ます。 この場合はロボットの電源を入れてRaspberry
+							Piを再起動し、再度/tmp/logを確認しましょう。</p>
+						<code>
 								chmod: cannot access `/dev/ttyUSB0': No such file or directory
 							</code>
-						</div>
 					</div>
-					<h2 class="sub-header">4. C言語で書かれたサンプルの実行</h2>
-					<div class="row">
-						<div class="col-sm-12">
-							<p>C言語で書かれたサンプルを実行してみましょう。コンパイルした<code>a.out</code>を実行するとロボットが動き出すので注意しましょう。</p>
-							<pre><code class="shell">ubuntu@ubuntu:/run/shm$ cd ~/RobotDesign3/code_sample/c_cpp/
+				</div>
+				<h2 class="sub-header">4. C言語で書かれたサンプルの実行</h2>
+				<div class="row">
+					<div class="col-sm-12">
+						<p>C言語で書かれたサンプルを実行してみましょう。コンパイルした<code>a.out</code>を実行するとロボットが動き出すので注意しましょう。</p>
+						<pre><code class="shell">ubuntu@ubuntu:/run/shm$ cd ~/RobotDesign3/code_sample/c_cpp/
 ubuntu@ubuntu:~/RobotDesign3/code_sample/c_cpp$ gcc manip.cc -o a.out
 ubuntu@ubuntu:~/RobotDesign3/code_sample/c_cpp$ ./a.out
 </code></pre>
-							今回使用しているシステムはオープンソースソフトウェアとして開発されており、すべてWeb上で<a href="https://github.com/ryuichiueda/RobotDesign3" target=”_blank”>公開されています</a>。
-							今回実行したサンプルは<a href="https://github.com/ryuichiueda/RobotDesign3/blob/master/code_sample/c_cpp/manip.cc" target="_blank">こちら</a>です。
-						</div>
+						今回使用しているシステムはオープンソースソフトウェアとして開発されており、すべてWeb上で<a
+							href="https://github.com/ryuichiueda/RobotDesign3" target=”_blank”>公開されています</a>。
+						今回実行したサンプルは<a
+							href="https://github.com/ryuichiueda/RobotDesign3/blob/master/code_sample/c_cpp/manip.cc"
+							target="_blank">こちら</a>です。
 					</div>
 				</div>
 			</div>
 		</div>
-		<footer class="footer">
-			<div class="container">
-				<p class="text-muted">Copyright (C) 2016-2018 CIT Autonomous lab. All rights researved.</p>
-			</div>                                                                     
-		</footer>  
+	</div>
+	<footer class="footer">
+		<div class="container">
+			<p class="text-muted">Copyright (C) 2016-2018 CIT Autonomous lab. All rights reserved.</p>
+		</div>
+	</footer>
 
-		<!-- Bootstrap core JavaScript
+	<!-- Bootstrap core JavaScript
 	  ================================================== -->
-	  <!-- Placed at the end of the document so the pages load faster -->
-	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	  <script>
-		  $(function() {
-			  $("#navbar").load("./navbar.html");
-			  $("#menu").load("./menu.html");
-		  });
-	  </script>
-	  <script>window.jQuery || document.write('<script src="./assets/js/vendor/jquery.min.js"><\/script>')</script>
-	  <script src="./dist/js/bootstrap.min.js"></script>
-	  <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-	  <script src="./assets/js/vendor/holder.min.js"></script>
-	  <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-	  <script src="./assets/js/ie10-viewport-bug-workaround.js"></script>
-	</body>
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script>
+		$(function () {
+			$("#navbar").load("./navbar.html");
+			$("#menu").load("./menu.html");
+		});
+	</script>
+	<script>window.jQuery || document.write('<script src="./assets/js/vendor/jquery.min.js"><\/script>')</script>
+	<script src="./dist/js/bootstrap.min.js"></script>
+	<!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+	<script src="./assets/js/vendor/holder.min.js"></script>
+	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+	<script src="./assets/js/ie10-viewport-bug-workaround.js"></script>
+</body>
+
 </html>
