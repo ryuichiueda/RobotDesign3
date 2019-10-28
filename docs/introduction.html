@@ -81,7 +81,7 @@
 				<div class="row">
 					<div class="col-sm-12">
 						<p>SSID "adrobo-robothand" に接続します。</p>
-						<p><a href="./ta_setup.html" target=”_blank”>セットアップ</a>またはRaspberry
+						<p><a href="./ta_setup.html" target="_blank">セットアップ</a>またはRaspberry
 							Pi本体または基板に貼り付けられたIPアドレスが印字されたテープを参照し、操作する対象のRaspberry PiのIPアドレスを確認します。</p>
 						<p>IPアドレスは<code>10.232.169.22</code>などのように数字とピリオドで構成されています。Google Chromeを起動してURLとして入力します。</p>
 						<p>「関節角操作」、「電磁弁の操作」、「関節角の連続指定」ができること、関節角を変更すると「モニタ」上でロボットのモデルと実機の両方が動くことを確認しましょう。</p>
@@ -108,6 +108,8 @@
 						<h3 class="sub-header">確認</h3>
 						<p><code>adconv_values</code>, <code>angles</code>,
 							<code>ev_on_off</code>の3つのファイルが存在することを確認しましょう。<code>$</code>より後のコマンドを1行ずつTera Termに入力していきます。
+						</p>
+						<p>Tera TermではAlt+Vまたはカーソル右クリック<a href="https://ttssh2.osdn.jp/manual/ja/usage/shortcut.html" target="_blank">など</a>でクリップボードの内容をコンソールに貼り付けることができます。
 						</p>
 						<pre><code class="shell">ubuntu@ubuntu:~$ cd /run/shm
 ubuntu@ubuntu:/run/shm$ ls
@@ -156,7 +158,7 @@ ubuntu@ubuntu:~/RobotDesign3/code_sample/c_cpp$ gcc manip.cc -o a.out
 ubuntu@ubuntu:~/RobotDesign3/code_sample/c_cpp$ ./a.out
 </code></pre>
 						今回使用しているシステムはオープンソースソフトウェアとして開発されており、すべてWeb上で<a
-							href="https://github.com/ryuichiueda/RobotDesign3" target=”_blank”>公開されています</a>。
+							href="https://github.com/ryuichiueda/RobotDesign3" target="_blank">公開されています</a>。
 						今回実行したサンプルは<a
 							href="https://github.com/ryuichiueda/RobotDesign3/blob/master/code_sample/c_cpp/manip.cc"
 							target="_blank">こちら</a>です。
