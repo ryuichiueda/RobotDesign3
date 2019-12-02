@@ -83,12 +83,13 @@
 				<h2 class="sub-header">2. Webブラウザ経由の操作</h2>
 				<div class="row">
 					<div class="col-sm-12">
-						<p>SSID "adrobo-robothand" に接続します。</p>
+						<p>SSID "adrobo-robothand_5G" に接続します。</p>
 						<p><a href="./ta_setup.html" target="_blank">セットアップ</a>またはRaspberry
 							Pi本体または基板に貼り付けられたIPアドレスが印字されたテープを参照し、操作する対象のRaspberry PiのIPアドレスを確認します。</p>
 						<p>IPアドレスは<code>10.232.169.22</code>などのように数字とピリオドで構成される文字列です。Google Chromeを起動してURLとして入力します。</p>
 						<p>「関節角操作」、「電磁弁の操作」、「関節角の連続指定」ができること、関節角を変更すると「モニタ」上でロボットのモデルと実機の両方が動くことを確認しましょう。</p>
 						<p>さらにここでティーチングボックスの非常停止スイッチの使い方も確認しておきましょう。</p>
+						<p>実機なしでシミュレーションだけ利用する方法については<a href="./controller.html#offline" target="_blank">こちら</a>にまとめています。</p>
 						<img src="https://i.gyazo.com/29a1ee222fbaafd26a7635dc84cb6128.png" alt="Image from Gyazo"
 							width="100%" />
 					</div>
@@ -156,6 +157,7 @@ ubuntu@ubuntu:/run/shm$ echo "30,0,0,0,0" > angles
 				<div class="row">
 					<div class="col-sm-12">
 						<p>C言語で書かれたサンプルを実行してみましょう。コンパイルした<code>a.out</code>を実行するとロボットが動き出すので注意しましょう。</p>
+						<p>CtrlキーとCキーを同時押しすることでプログラムを途中で止めることができます。</p>
 						<pre><code class="shell">ubuntu@ubuntu:/run/shm$ cd ~/RobotDesign3/code_sample/c_cpp/
 ubuntu@ubuntu:~/RobotDesign3/code_sample/c_cpp$ gcc manip.cc -o a.out
 ubuntu@ubuntu:~/RobotDesign3/code_sample/c_cpp$ ./a.out
