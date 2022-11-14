@@ -44,6 +44,9 @@ class RobotIO:
 	def write_ev(self,value):
 		wp.digitalWrite(RobotIO.EV_PIN, value)
 
+	def write_ev2(self,value):
+		wp.digitalWrite(RobotIO.EV2_PIN, value)
+
 	def send_angles(self, angles):
 		J1_ULMT = 150 
 		J1_LLMT = -150
@@ -105,7 +108,7 @@ if __name__ == '__main__':
 				rio.write_ev(v)
 			with open("/run/shm/ev2_on_off","r") as f:
 				v = int(f.readline())
-				rio.write_ev(v)
+				rio.write_ev2(v)
 		except:
 			pass
 
