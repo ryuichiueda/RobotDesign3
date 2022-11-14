@@ -32,14 +32,14 @@ if __name__ == '__main__':
 	form = cgi.FieldStorage()
 
 	http_header = "Content-type: text/html\n\n"
-	print http_header
+	print(http_header)
 
 	if form.has_key("angles"):
 		with open("/run/shm/angles","w") as f:
 			f.write(form["angles"].value)
-			os.chmod("/run/shm/angles",0777)
+			os.chmod("/run/shm/angles", 0o777)
 	else:
-		print "GET ERROR"
+		print("GET ERROR")
 
 	if form.has_key("ev"):
 		with open("/run/shm/ev_on_off","w") as f:
@@ -47,6 +47,5 @@ if __name__ == '__main__':
 				f.write("1\n")
 			elif form["ev"].value == "OFF":
 				f.write("0\n")
-
-			os.chmod("/run/shm/ev_on_off",0777)
+			os.chmod("/run/shm/ev_on_off", 0o777)
 

@@ -30,16 +30,16 @@ import sys,cgi,os
 if __name__ == '__main__':
 	form = cgi.FieldStorage()
 	http_header = "Content-type: text/html\n\n"
-	print http_header,
+	print(http_header)
 
 	if not form.has_key("onoff"):
-		print "ERROR"
+		print("ERROR")
 		sys.exit(1)
 
 	try:
 		with open("/run/shm/ev_on_off","w") as f:
 			values = form["onoff"].value
 			f.write(values + '\n')
-			os.chmod("/run/shm/ev_on_off",0777)
+			os.chmod("/run/shm/ev_on_off", 0o777)
 	except:
-		print "FILE ERROR"
+		print("FILE ERROR")

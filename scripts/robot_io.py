@@ -35,7 +35,7 @@ class RobotIO:
 		wp.wiringPiSetupGpio()
 		wp.pinMode(RobotIO.EV_PIN, wp.GPIO.OUTPUT)
 		self.uart = open('/dev/ttyUSB0',"wb")
-                self.prev = ""
+		self.prev = ""
 
 	def read_da(self,ch):
 		return wp.analogRead(RobotIO.PIN_BASE+ch)
@@ -43,7 +43,7 @@ class RobotIO:
 	def write_ev(self,value):
 		wp.digitalWrite(RobotIO.EV_PIN,value)
 
-	def send_angles(self,angles):
+	def send_angles(self, angles):
 		J1_ULMT = 150 
 		J1_LLMT = -150
 		angles = [ a if a < J1_ULMT else J1_ULMT for a in angles ]
@@ -54,13 +54,13 @@ class RobotIO:
 		s = ",".join(s) + '\n'
     
 		try:
-                        if self.prev == s:
+			if self.prev == s:
 				return
 			self.uart.write(s)
 			self.prev = s
-			print "manipulator: ", s
+			print("manipulator: {}".format(s))
 		except:
-			print s + " NG: /dev/ttyUSB0 unavailable"
+			print(s + " NG: /dev/ttyUSB0 unavailable")
 
 def parse_angles(f):
 	# 最初の行を読む
@@ -76,7 +76,7 @@ def parse_angles(f):
 			rio.send_angles(values[0:4])
 			time.sleep(values[5]/1000.0)
 		else:
-			print "NG"
+			print("NG")
 
 def send_angles():
     while True:
