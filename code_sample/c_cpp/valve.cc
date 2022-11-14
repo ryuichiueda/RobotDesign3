@@ -22,6 +22,12 @@ void setValve(int valve_on_off)
 		return;
 	fprintf(manip,"%d\n",valve_on_off);
 	fclose(manip);
+
+	FILE *manip = fopen("/run/shm/ev2_on_off","w");
+	if(manip == NULL)
+		return;
+	fprintf(manip,"%d\n",valve_on_off);
+	fclose(manip);
 }
 
 int main(int argc, char const* argv[])

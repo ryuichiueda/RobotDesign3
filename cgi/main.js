@@ -43,6 +43,7 @@ function sendAngles()
 	}
 	url = url.replace(/,$/,"");
 	url = url + "&ev=" + ev;
+	url = url + "&ev2=" + ev2;
 	httpReq.open("GET",url,true);
 	httpReq.send(null);
 }
@@ -89,6 +90,21 @@ function ev(val)
 	httpReq.send(null);
 }
 
+function ev2(val)
+{
+	if(window.location.href.substr(0,4) == "file")
+		return;
+
+	var httpReq = new XMLHttpRequest();
+	httpReq.onreadystatechange = function(){
+		if(httpReq.readyState != 4 || httpReq.status != 200)
+			return;
+
+	}
+	url = "/ev.py?2onoff=" + val;
+	httpReq.open("GET",url,true);
+	httpReq.send(null);
+}
 
 function run()
 {
@@ -112,7 +128,8 @@ function oneStep(as)
 		angles[k] = as[k];
 	}
 	ev = as[6];
-
+	ev2 = as[7];
+	
 	j=0;
 	for(k=1;k<=6;k++){
 		if(k==4)

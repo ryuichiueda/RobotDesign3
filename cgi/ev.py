@@ -35,11 +35,19 @@ if __name__ == '__main__':
 	if not form.has_key("onoff"):
 		print("ERROR")
 		sys.exit(1)
+	if not form.has_key("2onoff"):
+		print("ERROR")
+		sys.exit(1)
 
 	try:
 		with open("/run/shm/ev_on_off","w") as f:
 			values = form["onoff"].value
 			f.write(values + '\n')
 			os.chmod("/run/shm/ev_on_off", 0o777)
+
+		with open("/run/shm/ev2_on_off","w") as f:
+			values = form["2onoff"].value
+			f.write(values + '\n')
+			os.chmod("/run/shm/ev2_on_off", 0o777)
 	except:
 		print("FILE ERROR")

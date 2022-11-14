@@ -29,6 +29,7 @@ import threading
 class RobotIO:
 	PIN_BASE = 100
 	EV_PIN = 17
+	EV2_PIN = 19
 
 	def __init__(self):
 		wp.mcp3002Setup(RobotIO.PIN_BASE, 0)
@@ -41,7 +42,7 @@ class RobotIO:
 		return wp.analogRead(RobotIO.PIN_BASE+ch)
 
 	def write_ev(self,value):
-		wp.digitalWrite(RobotIO.EV_PIN,value)
+		wp.digitalWrite(RobotIO.EV_PIN, value)
 
 	def send_angles(self, angles):
 		J1_ULMT = 150 
@@ -100,6 +101,9 @@ if __name__ == '__main__':
 
 		try:
 			with open("/run/shm/ev_on_off","r") as f:
+				v = int(f.readline())
+				rio.write_ev(v)
+			with open("/run/shm/ev2_on_off","r") as f:
 				v = int(f.readline())
 				rio.write_ev(v)
 		except:

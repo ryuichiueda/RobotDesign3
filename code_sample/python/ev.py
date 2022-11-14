@@ -12,5 +12,15 @@ for i in range(10):
 
 	time.sleep(1)
 
+for i in range(10):
+	with open("/run/shm/ev2_on_off","w") as f:
+		if i%2 == 0:
+			f.write("1\n");
+		else:
+			f.write("0\n");
+
+	time.sleep(1)
+
 #パーミッションの関係でev_on_offが残るとCGIが動かなくなるので消しておく
 os.remove("/run/shm/ev_on_off")
+os.remove("/run/shm/ev2_on_off")
