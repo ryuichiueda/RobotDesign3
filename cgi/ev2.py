@@ -40,6 +40,6 @@ if __name__ == '__main__':
 		with open("/run/shm/ev2_on_off","w") as f:
 			values = form["onoff"].value
 			f.write(values + '\n')
-			os.chmod("/run/shm/ev2_on_off", 0o777)
+			#os.chmod("/run/shm/ev2_on_off", 0o777)
 	except:
 		print("FILE ERROR")
