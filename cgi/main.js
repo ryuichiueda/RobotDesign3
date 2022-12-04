@@ -44,8 +44,6 @@ function sendAngles()
 	url = url.replace(/,$/,"");
 	url = url + "&ev=" + ev;
 	url = url + "&ev2=" + ev2;
-	console.log("URL");
-	console.log(url);
 	httpReq.open("GET",url,true);
 	httpReq.send(null);
 }
@@ -126,8 +124,6 @@ function run()
 
 function oneStep(as)
 {
-	console.log("as");
-	console.log(as);
 	for(k=0;k<5;k++){
 		angles[k] = as[k];
 	}
