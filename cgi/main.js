@@ -41,11 +41,15 @@ function sendAngles()
 		url += angles[j] + ',';
 		j++;
 	}
-	url = url.replace(/,$/,"");
-	url = url + "&ev=" + ev;
-	url = url + "&ev2=" + ev2;
+	// url = url.replace(/,$/,"");
+	// url = url + "&ev=" + ev;
+	// url = url + "&ev2=" + ev2;
 	httpReq.open("GET",url,true);
 	httpReq.send(null);
+
+	//ev
+	ev(ev);
+    ev2(ev2);
 }
 
 function numToSlide(obj)
