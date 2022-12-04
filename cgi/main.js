@@ -46,10 +46,6 @@ function sendAngles()
 	// url = url + "&ev2=" + ev2;
 	httpReq.open("GET",url,true);
 	httpReq.send(null);
-
-	//ev
-	ev(ev);
-    ev2(ev2);
 }
 
 function numToSlide(obj)
@@ -131,9 +127,7 @@ function oneStep(as)
 	for(k=0;k<5;k++){
 		angles[k] = as[k];
 	}
-	ev = as[6];
-	ev2 = as[7];
-	
+
 	j=0;
 	for(k=1;k<=6;k++){
 		if(k==4)
@@ -142,6 +136,8 @@ function oneStep(as)
 		document.getElementById("J" + k + "value").value = angles[j++];
 	}
 	sendAngles();
+	(as[6] == "ON")?ev(1):ev(0);
+	(as[7] == "ON")?ev2(1):ev2(0);	
 }
 
 function init()
