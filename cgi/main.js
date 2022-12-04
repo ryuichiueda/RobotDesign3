@@ -101,7 +101,7 @@ function ev2(val)
 			return;
 
 	}
-	url = "/ev.py?2onoff=" + val;
+	url = "/ev2.py?onoff=" + val;
 	httpReq.open("GET",url,true);
 	httpReq.send(null);
 }
