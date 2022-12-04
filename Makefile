@@ -3,7 +3,7 @@ install:
 	apt install python3-pip python3-dev
 
 	#WiringPiのインストール
-	pip install wiringpi2 --upgrade
+	pip3 install wiringpi2 --upgrade
 
 	#nkfのインストール
 	apt install nkf

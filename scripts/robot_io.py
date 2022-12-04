@@ -29,12 +29,13 @@ import threading
 class RobotIO:
 	PIN_BASE = 100
 	EV_PIN = 17
-	EV2_PIN = 19
+	EV2_PIN = 27
 
 	def __init__(self):
 		wp.mcp3002Setup(RobotIO.PIN_BASE, 0)
 		wp.wiringPiSetupGpio()
 		wp.pinMode(RobotIO.EV_PIN, wp.GPIO.OUTPUT)
+		wp.pinMode(RobotIO.EV2_PIN, wp.GPIO.OUTPUT)
 		self.uart = open('/dev/ttyUSB0',"wb")
 		self.prev = ""
 
