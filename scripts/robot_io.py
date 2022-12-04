@@ -106,6 +106,7 @@ if __name__ == '__main__':
 			with open("/run/shm/ev_on_off","r") as f:
 				v = int(f.readline())
 				rio.write_ev(v)
+			print("1")
 			with open("/run/shm/ev2_on_off","r") as f:
 				v = int(f.readline())
 				rio.write_ev2(v)
