@@ -31,7 +31,6 @@ function sendAngles()
 		org = document.getElementById("angles_log").innerHTML;
 		document.getElementById("angles_log").innerHTML = httpReq.responseText + "<br />" + org; 
 	}
-	//var url = "/ajax/last_articles.cgi?num=" + num;
 	var url = "/angles.py?angles="
 	var j = 0; //シミュレータの配列に角度を入れるためのカウンタ
 	for (i=1;i<=6;i++){
@@ -41,9 +40,6 @@ function sendAngles()
 		url += angles[j] + ',';
 		j++;
 	}
-	// url = url.replace(/,$/,"");
-	// url = url + "&ev=" + ev;
-	// url = url + "&ev2=" + ev2;
 	httpReq.open("GET",url,true);
 	httpReq.send(null);
 }

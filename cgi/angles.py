@@ -25,8 +25,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 '''
 import os,cgi
-import sys,time
-import struct
 
 if __name__ == '__main__':
 	form = cgi.FieldStorage()
@@ -40,20 +38,4 @@ if __name__ == '__main__':
 			os.chmod("/run/shm/angles", 0o777)
 	else:
 		print("GET ERROR")
-
-	if form.has_key("ev"):
-		with open("/run/shm/ev_on_off","w") as f:
-			if form["ev"].value == "ON":
-				f.write("1\n")
-			elif form["ev"].value == "OFF":
-				f.write("0\n")
-			os.chmod("/run/shm/ev_on_off", 0o777)
-
-	if form.has_key("ev2"):
-		with open("/run/shm/ev2_on_off","w") as f:
-			if form["ev2"].value == "ON":
-				f.write("1\n")
-			elif form["ev2"].value == "OFF":
-				f.write("0\n")
-			os.chmod("/run/shm/ev2_on_off", 0o777)
 
