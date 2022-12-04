@@ -114,7 +114,7 @@ function run()
 	t = 0;
 	for(i=0;i<lns.length;i++){
 		as = lns[i].split(",");
-		if(as.length < 7)
+		if(as.length < 6)
 			continue;
 
 		setTimeout( function(a) { oneStep(a); }, t , as );
