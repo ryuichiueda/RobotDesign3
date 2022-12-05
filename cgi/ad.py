@@ -27,10 +27,10 @@ SOFTWARE.
 
 if __name__ == '__main__':
 	http_header = "Content-type: text/html\n\n"
-	print http_header,
+	print(http_header)
 
 	try:
 		with open("/run/shm/adconv_values","r") as f:
-			print f.readline(),
+			print(f.readline())
 	except:
-		print "ADCONV READ ERROR"
+		print("ADCONV READ ERROR")

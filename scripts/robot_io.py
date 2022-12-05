@@ -29,21 +29,26 @@ import threading
 class RobotIO:
 	PIN_BASE = 100
 	EV_PIN = 17
+	EV2_PIN = 27
 
 	def __init__(self):
 		wp.mcp3002Setup(RobotIO.PIN_BASE, 0)
 		wp.wiringPiSetupGpio()
 		wp.pinMode(RobotIO.EV_PIN, wp.GPIO.OUTPUT)
+		wp.pinMode(RobotIO.EV2_PIN, wp.GPIO.OUTPUT)
 		self.uart = open('/dev/ttyUSB0',"wb")
-                self.prev = ""
+		self.prev = ""
 
 	def read_da(self,ch):
 		return wp.analogRead(RobotIO.PIN_BASE+ch)
 
 	def write_ev(self,value):
-		wp.digitalWrite(RobotIO.EV_PIN,value)
+		wp.digitalWrite(RobotIO.EV_PIN, value)
 
-	def send_angles(self,angles):
+	def write_ev2(self,value):
+		wp.digitalWrite(RobotIO.EV2_PIN, value)
+
+	def send_angles(self, angles):
 		J1_ULMT = 150 
 		J1_LLMT = -150
 		angles = [ a if a < J1_ULMT else J1_ULMT for a in angles ]
@@ -54,13 +59,13 @@ class RobotIO:
 		s = ",".join(s) + '\n'
     
 		try:
-                        if self.prev == s:
+			if self.prev == s:
 				return
 			self.uart.write(s)
 			self.prev = s
-			print "manipulator: ", s
+			print("manipulator: {}".format(s))
 		except:
-			print s + " NG: /dev/ttyUSB0 unavailable"
+			print(s + " NG: /dev/ttyUSB0 unavailable")
 
 def parse_angles(f):
 	# 最初の行を読む
@@ -76,7 +81,7 @@ def parse_angles(f):
 			rio.send_angles(values[0:4])
 			time.sleep(values[5]/1000.0)
 		else:
-			print "NG"
+			print("NG")
 
 def send_angles():
     while True:
@@ -102,6 +107,10 @@ if __name__ == '__main__':
 			with open("/run/shm/ev_on_off","r") as f:
 				v = int(f.readline())
 				rio.write_ev(v)
+			print("1")
+			with open("/run/shm/ev2_on_off","r") as f:
+				v = int(f.readline())
+				rio.write_ev2(v)
 		except:
 			pass
 

@@ -13,4 +13,4 @@ sudo chmod o-t /run/shm/
 sudo chmod 777 /dev/ttyUSB0
 
 ###アプリの起動###
-sudo python /home/ubuntu/RobotDesign3/scripts/robot_io.py &> /tmp/robot_io
+sudo python3 /home/ubuntu/RobotDesign3/scripts/robot_io.py &> /tmp/robot_io

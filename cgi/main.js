@@ -31,7 +31,6 @@ function sendAngles()
 		org = document.getElementById("angles_log").innerHTML;
 		document.getElementById("angles_log").innerHTML = httpReq.responseText + "<br />" + org; 
 	}
-	//var url = "/ajax/last_articles.cgi?num=" + num;
 	var url = "/angles.py?angles="
 	var j = 0; //シミュレータの配列に角度を入れるためのカウンタ
 	for (i=1;i<=6;i++){
@@ -41,8 +40,6 @@ function sendAngles()
 		url += angles[j] + ',';
 		j++;
 	}
-	url = url.replace(/,$/,"");
-	url = url + "&ev=" + ev;
 	httpReq.open("GET",url,true);
 	httpReq.send(null);
 }
@@ -89,6 +86,21 @@ function ev(val)
 	httpReq.send(null);
 }
 
+function ev2(val)
+{
+	if(window.location.href.substr(0,4) == "file")
+		return;
+
+	var httpReq = new XMLHttpRequest();
+	httpReq.onreadystatechange = function(){
+		if(httpReq.readyState != 4 || httpReq.status != 200)
+			return;
+
+	}
+	url = "/ev2.py?onoff=" + val;
+	httpReq.open("GET",url,true);
+	httpReq.send(null);
+}
 
 function run()
 {
@@ -111,7 +123,6 @@ function oneStep(as)
 	for(k=0;k<5;k++){
 		angles[k] = as[k];
 	}
-	ev = as[6];
 
 	j=0;
 	for(k=1;k<=6;k++){
@@ -121,6 +132,8 @@ function oneStep(as)
 		document.getElementById("J" + k + "value").value = angles[j++];
 	}
 	sendAngles();
+	(as[6] == "ON")?ev(1):ev(0);
+	(as[7] == "ON")?ev2(1):ev2(0);	
 }
 
 function init()

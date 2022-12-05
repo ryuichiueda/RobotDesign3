@@ -113,32 +113,36 @@
           <h3>電磁弁の操作</h3>
           <button type="button" class="btn btn-danger" id="ev_on" onclick="ev(1)">ON</button>
           <button type="button" class="btn btn-warning" id="ev_off" onclick="ev(0)">OFF</button>
+          </table>
+          <h3>電磁弁2の操作</h3>
+          <button type="button" class="btn btn-danger" id="ev2_on" onclick="ev2(1)">ON</button>
+          <button type="button" class="btn btn-warning" id="ev2_off" onclick="ev2(0)">OFF</button>
 	</div>
         <div class="span3">
 
           <h3>関節角の連続指定</h3>
-関節角5個と時間、電磁弁（ON、OFF）をカンマ区切りで入力のこと。<br />
+関節角5個と時間、電磁弁1、2（ON、OFF）をカンマ区切りで入力のこと。<br />
           <div style="padding-bottom:10px;padding-top:20px">
           <button type="button" class="btn btn-danger" id="run" onclick="run()">RUN</button>
           <button type="button" class="btn btn-primary" onclick="location.reload()">CLEAR</button>
 	  </div>
           <textarea rows="20" cols="40" id="sequence">
-20,20,20,20,20,2000,ON
-50,50,20,20,20,2000,OFF
-20,20,50,50,20,2000,ON
-50,-50,20,80,20,2000,OFF
-20,20,20,20,20,2000,ON
-50,50,20,20,20,2000,OFF
-20,20,50,50,20,2000,ON
--50,-50,20,80,20,2000,OFF
-20,20,20,20,20,2000,ON
-50,50,20,20,20,2000,OFF
-20,20,50,50,20,2000,ON
-50,-50,20,80,20,2000,OFF
-20,20,20,20,20,2000,ON
--50,50,20,20,20,2000,OFF
-20,20,50,50,20,2000,ON
-50,-50,20,80,20,2000,OFF
+20,20,20,20,20,2000,ON,OFF
+50,50,20,20,20,2000,OFF,ON
+20,20,50,50,20,2000,ON,OFF
+50,-50,20,80,20,2000,OFF,ON
+20,20,20,20,20,2000,ON,OFF
+50,50,20,20,20,2000,OFF,ON
+20,20,50,50,20,2000,ON,OFF
+-50,-50,20,80,20,2000,OFF,ON
+20,20,20,20,20,2000,ON,OFF
+50,50,20,20,20,2000,OFF,ON
+20,20,50,50,20,2000,ON,ON
+50,-50,20,80,20,2000,OFF,OFF
+20,20,20,20,20,2000,ON,ON
+-50,50,20,20,20,2000,OFF,OFF
+20,20,50,50,20,2000,ON,ON
+50,-50,20,80,20,2000,OFF,OFF
 </textarea>
         </div>
 	<div class="span4.5">
