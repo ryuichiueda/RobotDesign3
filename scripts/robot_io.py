@@ -36,7 +36,7 @@ class RobotIO:
 		wp.wiringPiSetupGpio()
 		wp.pinMode(RobotIO.EV_PIN, wp.GPIO.OUTPUT)
 		wp.pinMode(RobotIO.EV2_PIN, wp.GPIO.OUTPUT)
-		self.uart = open('/dev/ttyUSB0',"wb")
+		self.uart = open('/dev/ttyUSB0',"w")
 		self.prev = ""
 
 	def read_da(self,ch):
@@ -107,7 +107,6 @@ if __name__ == '__main__':
 			with open("/run/shm/ev_on_off","r") as f:
 				v = int(f.readline())
 				rio.write_ev(v)
-			print("1")
 			with open("/run/shm/ev2_on_off","r") as f:
 				v = int(f.readline())
 				rio.write_ev2(v)
