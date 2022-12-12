@@ -36,7 +36,7 @@ class RobotIO:
 		wp.wiringPiSetupGpio()
 		wp.pinMode(RobotIO.EV_PIN, wp.GPIO.OUTPUT)
 		wp.pinMode(RobotIO.EV2_PIN, wp.GPIO.OUTPUT)
-		self.uart = open('/dev/ttyUSB0',"wb")
+		self.uart = open('/dev/ttyUSB0',"w")
 		self.prev = ""
 
 	def read_da(self,ch):
@@ -53,15 +53,16 @@ class RobotIO:
 		J1_LLMT = -150
 		angles = [ a if a < J1_ULMT else J1_ULMT for a in angles ]
 		angles = [ a if a > J1_LLMT else J1_LLMT for a in angles ]
-    
+
 		s = [str(a) for a in angles ]
 		s = ['0' + a if len(a) == 1 else a for a in s ] 
 		s = ",".join(s) + '\n'
-    
+
 		try:
 			if self.prev == s:
 				return
 			self.uart.write(s)
+			self.uart.flush()
 			self.prev = s
 			print("manipulator: {}".format(s))
 		except:
@@ -107,7 +108,7 @@ if __name__ == '__main__':
 			with open("/run/shm/ev_on_off","r") as f:
 				v = int(f.readline())
 				rio.write_ev(v)
-			print("1")
+				
 			with open("/run/shm/ev2_on_off","r") as f:
 				v = int(f.readline())
 				rio.write_ev2(v)
