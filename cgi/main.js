@@ -36,8 +36,10 @@ function sendAngles()
 	for (i=1;i<=6;i++){
 		if(i==4)
 			continue;
-
-		url += angles[j] + ',';
+		if(j<=3)
+			url += angles[j] + ',';
+		if(j==4)
+		url += angles[j];
 		j++;
 	}
 	httpReq.open("GET",url,true);
