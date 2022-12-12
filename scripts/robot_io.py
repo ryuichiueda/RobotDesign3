@@ -59,6 +59,7 @@ class RobotIO:
 		s = ",".join(s) + '\n'
     
 		try:
+			print(f"s:{s}")
 			if self.prev == s:
 				return
 			self.uart.write(s)
