@@ -32,7 +32,7 @@ if __name__ == '__main__':
 	http_header = "Content-type: text/html\n\n"
 	print(http_header)
 
-	if not form.has_key("onoff"):
+	if not "onoff" in form:
 		print("ERROR")
 		sys.exit(1)
 

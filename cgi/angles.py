@@ -32,7 +32,7 @@ if __name__ == '__main__':
 	http_header = "Content-type: text/html\n\n"
 	print(http_header)
 
-	if form.has_key("angles"):
+	if "angles" in form:
 		with open("/run/shm/angles","w") as f:
 			f.write(form["angles"].value)
 			os.chmod("/run/shm/angles", 0o777)
